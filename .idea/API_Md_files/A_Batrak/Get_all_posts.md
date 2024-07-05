@@ -15,7 +15,7 @@ Given Autotest Framework is launched
 And social networks server base URI: "http://chatty.telran-edu.de:8089" is set
 And all posts  are found
 And all posts are added to server via Post http method (endpoint "GET /api/posts/{id}", body)
-And added post id is returned
+And added post id is returned.
 ```
 
 |status|
