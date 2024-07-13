@@ -21,7 +21,6 @@ public class BaseTest {
                 fail("TEST FAILED");
             }
         }
-
         public void defineTestResultTrue(boolean condition) {
             String name = this.getClass().getName();
             try {
@@ -30,7 +29,6 @@ public class BaseTest {
                 fail("TEST FAILED");
             }
         }
-
         public void defineTestResultFalse(boolean condition) {
             String name = this.getClass().getName();
             try {
