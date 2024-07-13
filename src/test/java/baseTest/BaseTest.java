@@ -38,6 +38,7 @@ public class BaseTest {
             }
         }
 
+
         @BeforeAll
     public static void startBeforeTest(){
             setUpDriver();
