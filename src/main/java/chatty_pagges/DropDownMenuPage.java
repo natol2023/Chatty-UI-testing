@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class HeaderPage extends BasePage {
+public class DropDownMenuPage extends BasePage {
     @FindBy(className = "header__user")
     private WebElement headerUserText;
     @FindBy(css = "[href='/login']")
@@ -13,11 +13,11 @@ public class HeaderPage extends BasePage {
     @FindBy(className = "dropdown-menu")
     private WebElement headerDropdownMenu;
 
-    public HeaderPage(WebDriver driver) {
+    public DropDownMenuPage(WebDriver driver) {
         super(driver);
     }
 
-    public HeaderPage open() {
+    public DropDownMenuPage open(){
         driver.get("http://chatty.telran-edu.de:8089/homeblog");
         return this;
     }

@@ -1,6 +1,5 @@
 package chatty_pagges;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -9,7 +8,7 @@ import org.openqa.selenium.support.ui.Select;
 import java.io.File;
 
 
-public class ProfilePage extends BasePage {
+public class UserProfilePage extends BasePage {
 
     @FindBy(className = "post-header__feed")
     private WebElement profileFormTitle;
@@ -34,15 +33,14 @@ public class ProfilePage extends BasePage {
     @FindBy(css = "input[type='file'][accept='image/png,.png,image/jpg,.jpg,image/jpeg,.jpeg']")
     private WebElement avatarUpload;
 
-    public ProfilePage(WebDriver driver) {
+    public UserProfilePage(WebDriver driver) {
         super(driver);
     }
 
-    public ProfilePage open() {
+    public UserProfilePage open() {
         driver.get("http://chatty.telran-edu.de:8089/userprofile");
         return this;
     }
-
     public WebElement getPhone() {
         return phoneInputField;
     }
