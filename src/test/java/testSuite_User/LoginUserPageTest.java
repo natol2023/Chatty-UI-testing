@@ -39,7 +39,6 @@ public class LoginUserPageTest extends BaseTest {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         wait.until(ExpectedConditions.urlToBe("http://chatty.telran-edu.de:8089/homeblog"));
         defineTestResultEquals("http://chatty.telran-edu.de:8089/homeblog", driver.getCurrentUrl());
-    }
-}
+    }}
 
 

@@ -45,6 +45,7 @@ public class LoginPage extends BasePage {
         signUpLink.click();
         return new CreateAccountPage(driver);
     }
+
     public String getTextFromErrorMessage(){
         return errorMessageUserNotFound.getText();
     }

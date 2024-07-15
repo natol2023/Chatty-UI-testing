@@ -48,5 +48,4 @@ public class CreateAccountPage extends BasePage {
         Select select = new Select(selectDropDownMenu);
         select.selectByValue("admin");
         return this;
-    }
-}
+    }}
