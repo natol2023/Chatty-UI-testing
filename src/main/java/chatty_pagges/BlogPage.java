@@ -93,12 +93,9 @@ public class BlogPage extends BasePage {
         WebElement deleteButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//img[@alt='delete button']")));
         wait.until(ExpectedConditions.elementToBeClickable(deleteButton));
         deleteButton.click();
-
         wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//h3[text()='" + postTitle + "']")));
     }
 }
-
-
 
 
 

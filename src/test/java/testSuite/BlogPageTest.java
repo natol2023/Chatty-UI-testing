@@ -67,7 +67,6 @@ public class BlogPageTest extends BaseTest {
         loginPage.inputEmail();
         loginPage.inputPassword();
         loginPage.clickLogin();
-
         BlogPage blogPage = new BlogPage(driver, wait);
         sleep(5000);
         blogPage.clickCreatePost();
