@@ -19,7 +19,8 @@ public class LoginPage extends BasePage {
     private WebElement signUpLink;
     @FindBy(className = "text-error")
     private WebElement errorMessageUserNotFound;
-    private Instant wait;
+    @FindBy(xpath = "//div[@class='text-error']")
+    private WebElement errorMessageEmailAlreadyExists;
 
     public LoginPage(WebDriver driver) {
         super(driver);
@@ -49,7 +50,6 @@ public class LoginPage extends BasePage {
     public String getTextFromErrorMessage(){
         return errorMessageUserNotFound.getText();
     }
-
     public boolean loginButtonIsDisplayed(){
         return loginButton.isDisplayed();
     }

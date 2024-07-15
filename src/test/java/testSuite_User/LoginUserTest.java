@@ -13,7 +13,7 @@ import java.time.Duration;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class LoginUserPageTest extends BaseTest {
+public class LoginUserTest extends BaseTest {
 
     @Test
     public void loginUnregisteredUser() {
@@ -39,6 +39,22 @@ public class LoginUserPageTest extends BaseTest {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         wait.until(ExpectedConditions.urlToBe("http://chatty.telran-edu.de:8089/homeblog"));
         defineTestResultEquals("http://chatty.telran-edu.de:8089/homeblog", driver.getCurrentUrl());
-    }}
+    }
+
+    @Test
+    public void logoutFromHeaderTest() {
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.open()
+                .inputEmail("example4@email.com")
+                .inputPassword("example1234")
+                .clickLoginButton();
+        HeaderPage headerPage = new HeaderPage(driver);
+                headerPage.openHeaderPage()
+                .hoverDropDown()
+                .clickOnLogoutDropdown();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));    wait.until(ExpectedConditions.urlToBe("http://chatty.telran-edu.de:8089/login"));
+        defineTestResultEquals("http://chatty.telran-edu.de:8089/login", driver.getCurrentUrl());}
+
+}
 
 
