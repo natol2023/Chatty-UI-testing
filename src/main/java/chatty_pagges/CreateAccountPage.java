@@ -3,6 +3,7 @@ package chatty_pagges;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.Select;
 
 public class CreateAccountPage extends BasePage {
     @FindBy(xpath= "//input[@data-test='email']")
@@ -13,25 +14,38 @@ public class CreateAccountPage extends BasePage {
     private WebElement confirmPasswordInput;
     @FindBy(className = "registration-btn")
     private WebElement registrationButton;
-    private WebElement signUpLink;
+    @FindBy(tagName = "select")
+    private WebElement selectDropDownMenu;
 
     public CreateAccountPage(WebDriver driver) {
         super(driver);
     }
 
-    public CreateAccountPage open(){
-        driver.get("http://chatty.telran-edu.de:8089/registration");
+    public CreateAccountPage inputEmail(String email){
+        emailInput.sendKeys(email);
+    return this;
+    }
+    public CreateAccountPage inputPassword(String password){
+
+        passwordInput.sendKeys(password);
         return this;
     }
-    public void clickRegistryLink(){ signUpLink.click();}
-    public void inputEmail(){emailInput.sendKeys("test@gmail.com");}
-    public void inputPassword(){
-        passwordInput.sendKeys("qwerty");
+    public CreateAccountPage confirmPassword(String password){
+
+        confirmPasswordInput.sendKeys(password);
+        return this;
     }
-    public void confirmPassword(){
-        confirmPasswordInput.sendKeys("qwerty");
-    }
-    public void clickLogin(){
+    public BlogPage clickRegistrationButton(){
         registrationButton.click();
+        return new BlogPage(driver);
     }
-}
+    public CreateAccountPage selectUser(){
+        Select select = new Select(selectDropDownMenu);
+        select.selectByValue("user");
+        return this;
+    }
+    public CreateAccountPage selectAdmin(){
+        Select select = new Select(selectDropDownMenu);
+        select.selectByValue("admin");
+        return this;
+    }}
