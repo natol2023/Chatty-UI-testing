@@ -38,7 +38,6 @@ public class BaseTest {
             }
         }
 
-
         @BeforeAll
     public static void startBeforeTest(){
             setUpDriver();
@@ -48,7 +47,6 @@ public class BaseTest {
             driver.manage().window().maximize();
             driver.get("http://chatty.telran-edu.de:8089/login");
      }
-
      @AfterAll
     public static void quitAfterTest(){
             driver.quit();

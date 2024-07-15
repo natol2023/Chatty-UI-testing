@@ -48,6 +48,7 @@ public class LoginPage extends BasePage {
     public String getTextFromErrorMessage(){
         return errorMessageUserNotFound.getText();
     }
+
     public boolean loginButtonIsDisplayed(){
         return loginButton.isDisplayed();
     }
