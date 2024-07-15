@@ -36,8 +36,7 @@ public class BlogPage extends BasePage {
     private WebElement draftCheckbox;
     @FindBy (xpath = "//span[normalize-space()='My drafts']")
     private WebElement myDraftsLink;
-  //  @FindBy(xpath = "//img[@alt=\"delete button\"]")
-  @FindBy(xpath = "//img[@src='/static/media/delete.e4efcb06407fde1458a58bec214e33d7.svg']")
+    @FindBy(xpath = "//img[@src='/static/media/delete.e4efcb06407fde1458a58bec214e33d7.svg']")
     private List<WebElement> deleteButtons;
 
     public BlogPage(WebDriver driver, WebDriverWait wait) {
@@ -80,30 +79,21 @@ public class BlogPage extends BasePage {
     public void clickMyDraftsLink() {
         myDraftsLink.click();
     }
-//    public void deleteFirstPost() {
-//        if (!deleteButtons.isEmpty()) {
-//            deleteButtons.get(0).click();
-//            wait.until(ExpectedConditions.stalenessOf(deleteButtons.get(0)));
-public void openPost(String postTitle) {
+    public void openPost(String postTitle) {
     wait.until(ExpectedConditions.visibilityOfAllElements(postTitles));
     for (WebElement post : postTitles) {
         if (post.getText().equals(postTitle)) {
-            post.click(); // Предполагаем, что клик по посту открывает его
+            post.click();
             break;
         }
     }
 }
-
     public void deletePost(String postTitle) {
-        openPost(postTitle); // Открываем пост
-
-        // Убедимся, что кнопка удаления видима и кликабельна
+        openPost(postTitle); //
         WebElement deleteButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//img[@alt='delete button']")));
         wait.until(ExpectedConditions.elementToBeClickable(deleteButton));
         deleteButton.click();
 
-
-        // Ожидание исчезновения поста
         wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//h3[text()='" + postTitle + "']")));
     }
 }
