@@ -18,11 +18,6 @@ public class BlogPageTest extends BaseTest {
     private WebDriver driver;
     private WebDriverWait wait;
 
-    @BeforeEach
-    public void setUp() {
-        driver = new ChromeDriver();
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-    }
     @Test
     public void successCreatePost() throws InterruptedException {
         LoginPage loginPage = new LoginPage(driver);
@@ -73,10 +68,5 @@ public class BlogPageTest extends BaseTest {
         assertTrue(blogPage.isPostPresent("Nature"));
     }
 
-    @AfterEach
-    public void tearDown() {
-        if (driver != null) {
-            driver.quit();
-        }
     }
-}
+
