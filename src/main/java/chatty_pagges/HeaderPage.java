@@ -13,9 +13,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class HeaderPage extends BasePage {
-    public HeaderPage(WebDriver driver) {
-        super(driver);
-    }
+
+    private WebDriverWait wait;
 
     @FindBy(xpath = "//[@class='header-box']")
     private WebElement headerBox;
@@ -26,14 +25,22 @@ public class HeaderPage extends BasePage {
     @FindBy(className = "header__user")
     private WebElement dropdownMenu;
 
+    @FindBy(className = "dropdown-menu")
+    private WebElement classDropdownMenu;
+
     @FindBy(xpath = "//a[@href='/login']")
     private WebElement logoutLink;
 
-    @FindBy(xpath = "//[@href='/userprofile']")
+    @FindBy(xpath = "//a[@href='/userprofile']")
     private WebElement yourProfileLink;
 
     @FindBy(xpath = "//[@href='/draft']")
     private WebElement myDraftsLink;
+
+    public HeaderPage(WebDriver driver) {
+        super(driver);
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+    }
 
     public HeaderPage openHeaderPage() {
         return this;
@@ -54,8 +61,15 @@ public class HeaderPage extends BasePage {
 //        return new DraftPage(driver);
 //    }
 //
+    public void clickHeaderDropDown(){
+        //wait.until(ExpectedConditions.elementToBeClickable(classDropdownMenu));
+        classDropdownMenu.click();
+    }
+
     public void clickProfileLink() {
+        wait.until(ExpectedConditions.elementToBeClickable(yourProfileLink));
         yourProfileLink.click();
+        new ProfilePage(driver);
     }
 
     public HeaderPage hoverDropDown() {

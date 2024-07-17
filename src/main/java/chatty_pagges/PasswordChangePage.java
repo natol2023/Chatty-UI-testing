@@ -1,10 +1,15 @@
 package chatty_pagges;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class PasswordChangePage extends BasePage{
+import java.time.Duration;
+
+public class PasswordChangePage extends BasePage {
+
+    private WebDriverWait wait;
+
     @FindBy(className = "PasswordModal_passParagraph__feEN9")
     private WebElement formTitle;
     @FindBy(css = "input[placeholder='Old password']")
@@ -12,35 +17,42 @@ public class PasswordChangePage extends BasePage{
     @FindBy(css = "input[placeholder='New password']")
     private WebElement newPasswordField;
     @FindBy(css = "input[placeholder='Confirm new password']")
-    private WebElement confirmPasswordField;
+    private WebElement editConfirmPasswordField;
     @FindBy(className = "PasswordModal_pass_btn__eGL9h")
-    private WebElement saveButton;
+    private WebElement saveButtonForEditPassword;
     @FindBy(className = "PasswordModal_error__9a5OG")
     private WebElement errorMessage;
 
-    public PasswordChangePage(WebDriver driver) { super(driver);}
+    public PasswordChangePage(WebDriver driver) {
+        super(driver);
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+    }
 
-//    public PasswordChangePage getErrorMessage() {
+//    public WebElement getErrorMessage() {
 //        return errorMessage;
 //    }
 //
-//    public PasswordChangePage getFormTitle() {
+//    public WebElement getFormTitle() {
 //        return formTitle;
 //    }
 
-    public void enterOldPassword(String oldPasswordValue) {
-        oldPasswordField.sendKeys(oldPasswordValue);
+    public PasswordChangePage enterOldPassword(String oldPassword) {
+        oldPasswordField.sendKeys(oldPassword);
+        return this;
     }
 
-    public void enterNewPassword(String newPasswordValue) {
-        newPasswordField.sendKeys(newPasswordValue);
+    public PasswordChangePage enterNewPassword(String newPassword_r) {
+        newPasswordField.sendKeys(newPassword_r);
+        return this;
     }
 
-    public void confirmPassword(String confirmPasswordValue) {
-        confirmPasswordField.sendKeys(confirmPasswordValue);
+    public PasswordChangePage enterConfirmNewPassword(String confirmPasswordNew) {
+        editConfirmPasswordField.sendKeys(confirmPasswordNew);
+        return this;
     }
 
-    public void clickOnSaveButton() {
-        saveButton.click();
+    public ProfilePage clickOnSavePasswordButton() {
+        saveButtonForEditPassword.click();
+        return new ProfilePage(driver);
     }
 }
