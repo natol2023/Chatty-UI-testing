@@ -10,6 +10,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Instant;
 import java.util.List;
     public class BlogPage extends BasePage {
+         
         @FindBy(xpath = "//span[@data-test='post-header__plus']")
         private WebElement createPostButton;
         @FindBy(xpath = "//input[@data-test='title-input']")
