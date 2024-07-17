@@ -20,13 +20,13 @@ public class PasswordChangePage extends BasePage{
 
     public PasswordChangePage(WebDriver driver) { super(driver);}
 
-    public WebElement getErrorMessage() {
-        return errorMessage;
-    }
-
-    public WebElement getFormTitle() {
-        return formTitle;
-    }
+//    public PasswordChangePage getErrorMessage() {
+//        return errorMessage;
+//    }
+//
+//    public PasswordChangePage getFormTitle() {
+//        return formTitle;
+//    }
 
     public void enterOldPassword(String oldPasswordValue) {
         oldPasswordField.sendKeys(oldPasswordValue);

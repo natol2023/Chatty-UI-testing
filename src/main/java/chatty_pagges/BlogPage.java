@@ -14,7 +14,7 @@ import java.util.List;
 import static java.lang.Thread.sleep;
 
     public class BlogPage extends BasePage {
-        private final WebDriverWait wait;
+        private WebDriverWait wait;         // Pashora delete 'final'
         @FindBy(xpath = "//span[@data-test='post-header__plus']")
         private WebElement createPostButton;
         @FindBy(xpath = "//input[@data-test=\"title-input\"]")
@@ -39,6 +39,11 @@ import static java.lang.Thread.sleep;
         private WebElement myDraftsLink;
         @FindBy(xpath = "//img[@src='/static/media/delete.e4efcb06407fde1458a58bec214e33d7.svg']")
         private List<WebElement> deleteButtons;
+
+        // Pashora add driver
+        public BlogPage(WebDriver driver) {
+            super(driver);
+        }
 
         public BlogPage(WebDriver driver, WebDriverWait wait) {
             super(driver);
