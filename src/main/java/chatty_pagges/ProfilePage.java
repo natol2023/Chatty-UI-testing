@@ -3,16 +3,10 @@ package chatty_pagges;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.time.Duration;
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
 public class ProfilePage extends BasePage {
@@ -47,24 +41,8 @@ public class ProfilePage extends BasePage {
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(5));
     }
 
-    public ProfilePage open() {
-        driver.get("http://chatty.telran-edu.de:8089/userprofile");
-        return this;
-    }
-
     public ProfilePage clickOnEditButton() {
         editButton.click();
-        return this;
-    }
-
-    public ProfilePage clickOnSaveProfileButton() {
-        saveButtonForEditProfile.click();
-        return this;
-    }
-
-    public ProfilePage clickOnPasswordChangeButton() {
-        //wait.until(ExpectedConditions.elementToBeClickable(passwordChangeButton));
-        passwordChangeButton.click();
         return this;
     }
 
@@ -82,15 +60,15 @@ public class ProfilePage extends BasePage {
         return this;
     }
 
-    public ProfilePage editEnterBirthday(String newBirthday_r) {
+    public ProfilePage editEnterBirthday(String date, String month, String year) {
         wait.until(ExpectedConditions.visibilityOf(birthDateInputField));
-        birthDateInputField.click();
-        birthDateInputField.sendKeys(newBirthday_r);
+        birthDateInputField.clear();
+        birthDateInputField.sendKeys(date, month, year);
         return this;
     }
 
-    public ProfilePage clickGenderDropDown(){
-        wait.until(ExpectedConditions.visibilityOf(genderOption));
+    public ProfilePage clickGenderDropDown() {
+        wait.until(ExpectedConditions.elementToBeClickable(genderOption));
         genderOption.click();
         return this;
     }
@@ -114,47 +92,45 @@ public class ProfilePage extends BasePage {
         return this;
     }
 
-    public String getNameFromProfilePage(){
-        return nameInputField.getText();
+    public PasswordChangePage clickOnPasswordChangeButton() {
+        wait.until(ExpectedConditions.elementToBeClickable(passwordChangeButton));
+        passwordChangeButton.click();
+        return new PasswordChangePage(driver);
     }
 
-    public String getSurnameFromProfilePage(){
-        return surnameInputField.getText();
+    public ProfilePage clickOnSaveProfileButton() {
+        wait.until(ExpectedConditions.elementToBeClickable(saveButtonForEditProfile));
+        saveButtonForEditProfile.click();
+        return new ProfilePage(driver);
     }
 
-    public String getBirthdayFromProfilePage(){
+    public String getNameFromProfilePage() {
+        wait.until(ExpectedConditions.visibilityOf(nameInputField));
+        return nameInputField.getAttribute("value");
+    }
+
+    public String getSurnameFromProfilePage() {
+        wait.until(ExpectedConditions.visibilityOf(surnameInputField));
+        return surnameInputField.getAttribute("value");
+    }
+
+    public String getBirthdayFromProfilePage() {
+        wait.until(ExpectedConditions.visibilityOf(birthDateInputField));
+        return birthDateInputField.getAttribute("value");
+    }
+
+    public String getBirthdayFromProfilePage2() {
+        wait.until(ExpectedConditions.visibilityOf(birthDateInputField));
         return birthDateInputField.getText();
     }
 
-    public String getPhoneFromProfilePage(){
-        return phoneInputField.getText();
+    public String getPhoneFromProfilePage() {
+        wait.until(ExpectedConditions.visibilityOf(phoneInputField));
+        return phoneInputField.getAttribute("value");
     }
 
-    public String getGenderFromProfilePage(){
-        return genderOption.getText();
+    public String getGenderFromProfilePage() {
+        wait.until(ExpectedConditions.visibilityOf(genderOption));
+        return genderOption.getAttribute("value");
     }
-
-//    public List<String> containUserData(List<String> currentUserData) {
-//        List<String> currentUserData = new ArrayList<>();
-//        currentUserData.add(getNameFromProfilePage());
-//        currentUserData.add(getSurnameFromProfilePage());
-//        currentUserData.add(getBirthdayFromProfilePage());
-//        currentUserData.add(getPhoneFromProfilePage());
-//        currentUserData.add(getGenderFromProfilePage());
-//        return currentUserData;
-//    }
-
-//    public void uploadImage(String imagePath) {
-//        avatarUpload.sendKeys(new File(imagePath).getAbsolutePath());
-//    }
-//
-//    public WebElement getErrorMessage() {
-//        return errorMessage;
-//    }
-//
-//    public WebElement getProfileFormTitle() {
-//        assertTrue(profileFormTitle.isDisplayed());
-//        return profileFormTitle;
-//    }
-//
 }

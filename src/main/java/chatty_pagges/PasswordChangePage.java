@@ -1,7 +1,9 @@
 package chatty_pagges;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
@@ -19,22 +21,15 @@ public class PasswordChangePage extends BasePage {
     @FindBy(css = "input[placeholder='Confirm new password']")
     private WebElement editConfirmPasswordField;
     @FindBy(className = "PasswordModal_pass_btn__eGL9h")
+//    @FindBy(xpath = "//button[@class=\"PasswordModal_pass_btn__eGL9h\"]")
     private WebElement saveButtonForEditPassword;
     @FindBy(className = "PasswordModal_error__9a5OG")
     private WebElement errorMessage;
 
     public PasswordChangePage(WebDriver driver) {
         super(driver);
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
-
-//    public WebElement getErrorMessage() {
-//        return errorMessage;
-//    }
-//
-//    public WebElement getFormTitle() {
-//        return formTitle;
-//    }
 
     public PasswordChangePage enterOldPassword(String oldPassword) {
         oldPasswordField.sendKeys(oldPassword);
@@ -52,6 +47,7 @@ public class PasswordChangePage extends BasePage {
     }
 
     public ProfilePage clickOnSavePasswordButton() {
+        wait.until(ExpectedConditions.elementToBeClickable(saveButtonForEditPassword));
         saveButtonForEditPassword.click();
         return new ProfilePage(driver);
     }

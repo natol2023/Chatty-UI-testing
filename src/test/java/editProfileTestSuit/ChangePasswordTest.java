@@ -3,9 +3,9 @@ package editProfileTestSuit;
 import chatty_pagges.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
 import java.time.Duration;
 
 public class ChangePasswordTest extends SweetSugar {
@@ -36,7 +36,6 @@ public class ChangePasswordTest extends SweetSugar {
         profilePage.clickOnPasswordChangeButton();
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-        wait.until(ExpectedConditions.elementToBeClickable(By.className("pass__btn")));
 
         PasswordChangePage passwordChangePage = new PasswordChangePage(driver);
         passwordChangePage.enterOldPassword(oldPassword)

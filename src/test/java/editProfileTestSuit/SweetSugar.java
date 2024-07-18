@@ -3,31 +3,25 @@ package editProfileTestSuit;
 import baseTest.BaseTest;
 import chatty_pagges.*;
 import net.datafaker.Faker;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
 
 public class SweetSugar extends BaseTest {
 
-    @FindBy(xpath = "//h1")
-    private WebElement formTitle;
 
     LoginPage loginPage = new LoginPage(driver);
-//    HeaderPage headerPage = new HeaderPage(driver);
+    //    HeaderPage headerPage = new HeaderPage(driver);
 //    BlogPage blogPage = new BlogPage(driver);
     CreateAccountPage createAccountPage = new CreateAccountPage(driver);
-//    ProfilePage userprofilePage = new ProfilePage(driver);
+    //    ProfilePage userprofilePage = new ProfilePage(driver);
 //    PasswordChangePage passwordChangePage = new PasswordChangePage(driver);
     Faker faker = new Faker();
 
-    final String password_r = faker.internet().password(8,100);
+    final String password_r = faker.internet().password(8, 100);
     final String email_r = faker.internet().emailAddress();
     final String name_r = faker.name().firstName();
     final String surname_r = faker.date().toString();
@@ -43,6 +37,5 @@ public class SweetSugar extends BaseTest {
         createAccountPage.confirmPassword(password_r);
         createAccountPage.clickRegistrationButton();
     }
-
 
 }
