@@ -3,29 +3,26 @@ package editProfileTestSuit;
 import baseTest.BaseTest;
 import chatty_pagges.*;
 import net.datafaker.Faker;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-
 public class SweetSugar extends BaseTest {
-
 
     LoginPage loginPage = new LoginPage(driver);
     //    HeaderPage headerPage = new HeaderPage(driver);
 //    BlogPage blogPage = new BlogPage(driver);
     CreateAccountPage createAccountPage = new CreateAccountPage(driver);
-    //    ProfilePage userprofilePage = new ProfilePage(driver);
+    //        ProfilePage userprofilePage = new ProfilePage(driver);
 //    PasswordChangePage passwordChangePage = new PasswordChangePage(driver);
     Faker faker = new Faker();
 
-    final String password_r = faker.internet().password(8, 100);
-    final String email_r = faker.internet().emailAddress();
-    final String name_r = faker.name().firstName();
-    final String surname_r = faker.date().toString();
-    final String phone_r = faker.phoneNumber().toString();
+    protected final String password_r = faker.internet().password(8, 100);
+    protected final String email_r = faker.internet().emailAddress();
+    protected final String name_r = faker.name().firstName();
+    protected final String surname_r = faker.date().toString();
+    protected final String phone_r = faker.phoneNumber().toString();
 
 
     public void registerNewUser() {
@@ -38,4 +35,18 @@ public class SweetSugar extends BaseTest {
         createAccountPage.clickRegistrationButton();
     }
 
+    public void openProfilePage() {
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.open()
+                .inputEmail(email_r)
+                .inputPassword(password_r)
+                .clickLoginButton();
+
+        HeaderPage headerPage = new HeaderPage(driver);
+        headerPage.openHeaderPage()
+                .hoverDropDown()
+                .clickHeaderDropDown()
+                .clickProfileLink();
+
+    }
 }

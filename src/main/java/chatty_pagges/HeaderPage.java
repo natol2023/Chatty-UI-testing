@@ -46,9 +46,10 @@ public class HeaderPage extends BasePage {
         new LoginPage(driver);
     }
 
-    public void clickHeaderDropDown(){
-        //wait.until(ExpectedConditions.elementToBeClickable(classDropdownMenu));
+    public HeaderPage clickHeaderDropDown(){
+        wait.until(ExpectedConditions.elementToBeClickable(classDropdownMenu));
         classDropdownMenu.click();
+        return this;
     }
 
     public void clickProfileLink() {
