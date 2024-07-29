@@ -32,8 +32,7 @@ And added post id is returned
 Given initial setup
 When Autotest Framework updates post via Put http method (endpoint "/api/posts", body) with form data at server
 Then server returns updated post: new data and new status
-And Autotest Framework compares new post with post  from server. Assert they're equal  ?????  нужны ли эти строки?
-And Autotest Framework compares new status with post status from server. Assert they're equal  ??????   нужны ли эти строки?
+And Autotest Framework Then posts are equal 
 ```
 
 ### Test Clean Up

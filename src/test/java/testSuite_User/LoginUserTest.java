@@ -7,10 +7,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.time.Duration;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class LoginUserTest extends BaseTest {
@@ -49,11 +46,13 @@ public class LoginUserTest extends BaseTest {
                 .inputPassword("example1234")
                 .clickLoginButton();
         HeaderPage headerPage = new HeaderPage(driver);
-                headerPage.openHeaderPage()
+        headerPage.openHeaderPage()
                 .hoverDropDown()
                 .clickOnLogoutDropdown();
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));    wait.until(ExpectedConditions.urlToBe("http://chatty.telran-edu.de:8089/login"));
-        defineTestResultEquals("http://chatty.telran-edu.de:8089/login", driver.getCurrentUrl());}
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        wait.until(ExpectedConditions.urlToBe("http://chatty.telran-edu.de:8089/login"));
+        defineTestResultEquals("http://chatty.telran-edu.de:8089/login", driver.getCurrentUrl());
+    }
 
 }
 

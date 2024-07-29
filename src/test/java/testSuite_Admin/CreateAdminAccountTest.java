@@ -5,7 +5,6 @@ import chatty_pagges.LoginPage;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.time.Duration;
 
 public class CreateAdminAccountTest extends BaseTest {
@@ -24,6 +23,7 @@ public class CreateAdminAccountTest extends BaseTest {
         wait.until(ExpectedConditions.urlToBe("http://chatty.telran-edu.de:8089/homeblog"));
         defineTestResultEquals("http://chatty.telran-edu.de:8089/homeblog", driver.getCurrentUrl());
 
-    }}
+    }
+}
 
 
