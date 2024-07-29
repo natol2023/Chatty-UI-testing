@@ -6,6 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
 import java.time.Duration;
 
 
@@ -114,16 +115,6 @@ public class ProfilePage extends BasePage {
         return surnameInputField.getAttribute("value");
     }
 
-    public String getBirthdayFromProfilePage() {
-        wait.until(ExpectedConditions.visibilityOf(birthDateInputField));
-        return birthDateInputField.getAttribute("value");
-    }
-
-    public String getBirthdayFromProfilePage2() {
-        wait.until(ExpectedConditions.visibilityOf(birthDateInputField));
-        return birthDateInputField.getText();
-    }
-
     public String getPhoneFromProfilePage() {
         wait.until(ExpectedConditions.visibilityOf(phoneInputField));
         return phoneInputField.getAttribute("value");
@@ -132,5 +123,10 @@ public class ProfilePage extends BasePage {
     public String getGenderFromProfilePage() {
         wait.until(ExpectedConditions.visibilityOf(genderOption));
         return genderOption.getAttribute("value");
+    }
+
+    public String getBirthdayFromProfilePage() {
+        wait.until(ExpectedConditions.visibilityOf(birthDateInputField));
+        return birthDateInputField.getText();
     }
 }

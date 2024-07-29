@@ -5,13 +5,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.time.Duration;
 
 public class PasswordChangePage extends BasePage {
-
     private WebDriverWait wait;
-
     @FindBy(className = "PasswordModal_passParagraph__feEN9")
     private WebElement formTitle;
     @FindBy(css = "input[placeholder='Old password']")
@@ -21,7 +18,6 @@ public class PasswordChangePage extends BasePage {
     @FindBy(css = "input[placeholder='Confirm new password']")
     private WebElement editConfirmPasswordField;
     @FindBy(className = "PasswordModal_pass_btn__eGL9h")
-//    @FindBy(xpath = "//button[@class=\"PasswordModal_pass_btn__eGL9h\"]")
     private WebElement saveButtonForEditPassword;
     @FindBy(className = "PasswordModal_error__9a5OG")
     private WebElement errorMessage;
